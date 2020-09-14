@@ -11,7 +11,7 @@ connection.on('open',()=>{
     console.log('connected mongodb')
 });
 
-const movieRouter=require('./routes/movie')
+const movieRouter=require('./routes/movieRoutes')
 app.use('/movie',movieRouter)
 
 app.listen(9000,()=>{
