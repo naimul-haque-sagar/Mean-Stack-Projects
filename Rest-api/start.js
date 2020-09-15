@@ -1,5 +1,6 @@
 const express=require('express')
 const mongoose=require('mongoose')
+const movieRouter=require('./routes/movieRoutes')
 
 const dbUrl='mongodb://localhost/mean'
 
@@ -11,7 +12,7 @@ connection.on('open',()=>{
     console.log('connected mongodb')
 });
 
-const movieRouter=require('./routes/movieRoutes')
+app.use(express.json())
 app.use('/movie',movieRouter)
 
 app.listen(9000,()=>{
