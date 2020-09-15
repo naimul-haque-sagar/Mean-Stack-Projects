@@ -4,4 +4,5 @@ mongoose.connect('mongodb://localhost/mean-crud',(err)=>{
     else console.log('error database connection'+JSON.stringify(err))
 })
 
+
 module.exports=mongoose
