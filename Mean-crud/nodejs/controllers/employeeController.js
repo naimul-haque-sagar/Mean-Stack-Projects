@@ -38,12 +38,12 @@ router.put('/:id',(req,res)=>{
     if(!ObjectId.isValid(req.params.id)) 
     return res.status(404).send(`no record found for ${req.params.id}`)
 
-    var employee=new Employee({
+    var employee={
         name:req.body.name,
         position:req.body.position,
         office:req.body.office,
         salary:req.body.salary
-    })
+    }
 
     Employee.findByIdAndUpdate(req.params.id,{$set:employee},{new :true},(err,doc)=>{
         if(!err) res.send(doc)
