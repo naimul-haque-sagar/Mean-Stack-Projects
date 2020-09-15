@@ -15,6 +15,7 @@ connection.on('open',()=>{
 app.use(express.json())
 app.use('/movie',movieRouter)
 
-app.listen(9000,()=>{
-    console.log('server started 9000')
+const port=process.env.PORT || 9000
+app.listen(port,()=>{
+    console.log(`server started at ${port}`)
 })

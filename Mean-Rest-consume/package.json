@@ -1,0 +1,17 @@
+{
+  "name": "rest-consume",
+  "version": "1.0.0",
+  "description": "rest consuming api",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "author": "naimul-haque-sagar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongod": "^2.0.0",
+    "mongoose": "^5.10.5",
+    "nodemon": "^2.0.4"
+  }
+}

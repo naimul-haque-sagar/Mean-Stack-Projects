@@ -27,9 +27,9 @@ router.post('/',async (req,res)=>{
     }
 })
 
-router.get('/:id',async (req,res)=>{
+router.get('/:movieId',async (req,res)=>{
     try{
-        const getMovie=await Movie.findById(req.params.id)
+        const getMovie=await Movie.findById({_id:req.params.movieId})
         res.send(getMovie)
     }catch(err){
         res.send(err)
@@ -47,6 +47,14 @@ router.patch('/:id',async(req,res)=>{
     }
 })
 
+router.delete('/:movieId',async(req,res)=>{
+    try{
+        const deletedMovieItem=await Movie.remove({_id:req.params.movieId})
+        res.json(deletedMovieItem)
+    }catch(err){
+        res.send(err)
+    }
+})
 
 
 module.exports=router
