@@ -10,7 +10,7 @@ import {EmployeeService} from '../service/employee.service';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor(public employeeService:EmployeeService) { }
+  constructor(public service:EmployeeService) { }
 
   ngOnInit() {
     this.resetForm();
@@ -20,7 +20,7 @@ export class EmployeeComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form)
       form.reset();
-    this.employeeService.selectedEmployee = {
+    this.service.singleEmployee = {
       _id: "",
       name: "",
       position: "",
@@ -30,9 +30,8 @@ export class EmployeeComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log('on submit')
     if (form.value._id == "") {
-      this.employeeService.postEmployee(form.value).subscribe((res) => {
+      this.service.postEmployee(form.value).subscribe((res) => {
         this.resetForm(form);
         this.refreshEmployeeList();
       });
@@ -40,8 +39,8 @@ export class EmployeeComponent implements OnInit {
   }
 
   refreshEmployeeList() {
-    this.employeeService.getEmployeeList().subscribe((res) => {
-      this.employeeService.employees = res as Employee[];
+    this.service.getEmployeeList().subscribe((res) => {
+      this.service.employees = res as Employee[];
     });
   }
 }

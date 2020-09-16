@@ -8,9 +8,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmployeeService {
 
-  selectedEmployee:Employee;
+  singleEmployee:Employee;
   employees:Employee[];
-  readonly baseURL = 'http://localhost:8000/employees';
+
+  baseURL = 'http://localhost:8000/employees';
 
   constructor(private http: HttpClient) { }
 
