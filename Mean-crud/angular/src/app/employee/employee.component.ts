@@ -10,17 +10,20 @@ import {EmployeeService} from '../service/employee.service';
 })
 export class EmployeeComponent implements OnInit {
 
+  singleEmployee:Employee;
+  employees:Employee[];
+
   constructor(public service:EmployeeService) { }
 
   ngOnInit() {
     this.resetForm();
-    this.refreshEmployeeList();
+    this.resetList();
   }
 
   resetForm(form?: NgForm) {
     if (form)
       form.reset();
-    this.service.singleEmployee = {
+    this.singleEmployee = {
       _id: "",
       name: "",
       position: "",
@@ -33,14 +36,33 @@ export class EmployeeComponent implements OnInit {
     if (form.value._id == "") {
       this.service.postEmployee(form.value).subscribe((res) => {
         this.resetForm(form);
-        this.refreshEmployeeList();
+        this.resetList();
+      });
+    }else{
+      this.service.update(form.value).subscribe((res) => {
+        this.resetForm(form);
+        this.resetList();
       });
     }
   }
 
-  refreshEmployeeList() {
+  resetList() {
     this.service.getEmployeeList().subscribe((res) => {
-      this.service.employees = res as Employee[];
+      this.employees = res as Employee[];
     });
   }
+
+  update(emp: Employee) {
+    this.singleEmployee = emp;
+  }
+
+  delete(_id: string, form: NgForm) {
+    if (confirm('Deleting record ?') == true) {
+      this.service.delete(_id).subscribe((res) => {
+        this.resetList();
+        this.resetForm(form);
+      });
+    }
+  }
+
 }

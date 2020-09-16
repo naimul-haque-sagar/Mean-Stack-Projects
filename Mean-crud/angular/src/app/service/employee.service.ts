@@ -8,18 +8,23 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmployeeService {
 
-  singleEmployee:Employee;
-  employees:Employee[];
+  url = 'http://localhost:8000/employees';
 
-  baseURL = 'http://localhost:8000/employees';
+  constructor(private httpClient: HttpClient) { }
 
-  constructor(private http: HttpClient) { }
-
-  postEmployee(emp: Employee) {
-    return this.http.post(this.baseURL, emp);
+  postEmployee(employee: Employee) {
+    return this.httpClient.post(this.url, employee);
   }
 
   getEmployeeList() {
-    return this.http.get(this.baseURL);
+    return this.httpClient.get(this.url);
+  }
+
+  update(employee: Employee) {
+    return this.httpClient.put(this.url + `/${employee._id}`, employee);
+  }
+
+  delete(_id: string) {
+    return this.httpClient.delete(this.url + `/${_id}`);
   }
 }
