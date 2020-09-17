@@ -1,7 +1,7 @@
 {
-  "name": "rest-consume",
+  "name": "nodejs",
   "version": "1.0.0",
-  "description": "rest consuming api",
+  "description": "omdb movie api consume",
   "main": "index.js",
   "scripts": {
     "test": "nodemon index.js"
@@ -9,10 +9,13 @@
   "author": "naimul-haque-sagar",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongod": "^2.0.0",
-    "mongodb": "^3.6.2",
     "mongoose": "^5.10.5",
-    "nodemon": "^2.0.4"
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.4",
+    "request": "^2.88.2",
+    "request-promise-native": "^1.0.9"
   }
 }
