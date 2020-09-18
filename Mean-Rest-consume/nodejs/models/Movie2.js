@@ -1,26 +1,26 @@
 const mongoose=require('mongoose')
 
-var Movie=new mongoose.model('Movie',{
+var Movie2=new mongoose.model('Movie2',{
     title:{
         type:String,
         require:true
     },
     year:{
-        type:Number,
-        require:true
-    },
-    runtime:{
         type:String,
         require:true
     },
-    director:{
+    imdbID:{
         type:String,
         require:true
     },
-    production:{
+    type:{
+        type:String,
+        require:true
+    },
+    poster:{
         type:String,
         require:true
     }
 })
 
-module.exports=Movie
+module.exports=Movie2

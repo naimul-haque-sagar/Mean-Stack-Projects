@@ -31,7 +31,7 @@ router.get('/r2/getData/:id',(req, res)=> {
         res.send(helper.getOutput(data))
     })
     .catch(err => {
-        res.send(err);
+        res.send(err)
     })
 })
 
