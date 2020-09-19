@@ -3,6 +3,7 @@ const express=require('express')
 const cors=require('cors')
 const apiConsumeCcontroller=require('./controllers/api-consume-controller')
 const dataStore=require('./controllers/data-consume-and-store')
+const getData=require('./controllers/returns-data')
 
 const port=process.env.port||8000
 
@@ -16,3 +17,4 @@ app.listen(port,()=>{
 
 app.use('/movie',apiConsumeCcontroller)
 app.use('/store',dataStore)
+app.use('/crud',getData)
