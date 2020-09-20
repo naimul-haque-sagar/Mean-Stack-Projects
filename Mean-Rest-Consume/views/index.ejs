@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>	Rest Consume </title>
+	<% include head %>
+</head>
+<body>
+
+  <% include navbar %>
+  <% include searchbar %>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1></h1>
+			</div>
+			<div class="col-sm-12">
+				<% movieData.forEach((movie)=>{ %>
+					<div class="col-md-3 poster">
+						<img src="<%= imageUrlPrefix+movie.poster_path%>" />
+					</div>
+				<% }) %>
+			</div>
+		</div>
+  </div>
+  
+  <% include footer %>
+</body>
+</html>
