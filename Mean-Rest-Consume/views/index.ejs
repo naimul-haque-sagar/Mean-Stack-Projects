@@ -17,7 +17,7 @@
 			<div class="col-sm-12">
 				<% movieData.forEach((movie)=>{ %>
 					<div class="col-md-3 poster">
-						<img src="<%= imageUrlPrefix+movie.poster_path%>" />
+						<a href="/movie/<%= movie.id %>"><img src="<%= imageUrlPrefix+movie.poster_path%>" /></a>
 					</div>
 				<% }) %>
 			</div>

@@ -1,3 +1,4 @@
+const { json } = require('express');
 var express = require('express');
 var router = express.Router();
 const request=require('request')
@@ -20,5 +21,32 @@ router.get('/', function(req, res, next) {
     })
   })
 });
+
+router.get('/movie/:id',(req,res,next)=>{
+  const id=req.params.id
+  const url=`http://api.themoviedb.org/3/movie/${id}?api_key=${key}`
+
+  request.get(url,(error,response,result)=>{
+    const responseData=JSON.parse(result)
+    res.render('movie',{
+      responseData
+    })
+  })
+})
+
+router.post('/search',(req,res,next)=>{
+  const searchBy=encodeURI(req.body.searchByCredentials)
+  const category=req.body.category
+  const url=`http://api.themoviedb.org/3/search/${category}?query=${searchBy}&api_key=${key}`
+
+  request.get(url,(error,response,result)=>{
+    let movieData=JSON.parse(result)
+    console.log(movieData)
+    
+    res.render('index',{
+      movieData:movieData.results
+    })
+  })
+})
 
 module.exports = router;
